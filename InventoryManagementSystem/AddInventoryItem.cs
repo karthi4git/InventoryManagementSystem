@@ -11,6 +11,7 @@ namespace InventoryManagementSystem
         private readonly HttpClient _httpClient = new HttpClient();
         private const string ApiBaseUrl = "https://localhost:7286/api/Inventory";
         private MainForm _parentForm;
+        public InventoryItem lastItem { get; set; } = new InventoryItem();
         public AddInventoryItem(MainForm mainForm)
         {
             InitializeComponent();
@@ -27,12 +28,17 @@ namespace InventoryManagementSystem
                 MessageBox.Show("Please enter valid data for all fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-  
-      
+
+            await foreach (var item in _httpClient.GetFromJsonAsAsyncEnumerable<InventoryItem>(ApiBaseUrl))
+            {
+                lastItem = item;  // Keep track of the last item
+            }
+
+
             var newitem = new InventoryItem
             {
-                ItemId = Convert.ToInt16( txtItemId.Text),
-                Name =txtName.Text,
+                ItemId = Convert.ToInt16(lastItem.ItemId + 1),
+                Name = txtName.Text,
                 Quantity = Convert.ToInt16(txtQuantity.Text),
                 Price = Convert.ToDecimal(txtPrice.Text),
             };
@@ -43,6 +49,11 @@ namespace InventoryManagementSystem
             // Close Form2 after saving
             this.Close();
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
-    }
+}
 

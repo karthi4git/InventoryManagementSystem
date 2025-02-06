@@ -83,6 +83,7 @@
             btnRefreshInventoryItem.TabIndex = 4;
             btnRefreshInventoryItem.Text = "REFRESH";
             btnRefreshInventoryItem.UseVisualStyleBackColor = true;
+            btnRefreshInventoryItem.Click += btnRefreshInventoryItem_Click;
             // 
             // MainForm
             // 

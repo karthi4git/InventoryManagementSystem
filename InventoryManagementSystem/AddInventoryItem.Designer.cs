@@ -52,9 +52,9 @@
             panel1.Controls.Add(txtName);
             panel1.Controls.Add(txtQuantity);
             panel1.Controls.Add(txtPrice);
-            panel1.Location = new Point(47, 35);
+            panel1.Location = new Point(53, 12);
             panel1.Name = "panel1";
-            panel1.Size = new Size(499, 266);
+            panel1.Size = new Size(499, 268);
             panel1.TabIndex = 7;
             // 
             // lblQuantity
@@ -92,6 +92,7 @@
             lblItemId.Size = new Size(64, 25);
             lblItemId.TabIndex = 5;
             lblItemId.Text = "ItemId";
+            lblItemId.Visible = false;
             // 
             // txtItemId
             // 
@@ -99,6 +100,7 @@
             txtItemId.Name = "txtItemId";
             txtItemId.Size = new Size(150, 31);
             txtItemId.TabIndex = 4;
+            txtItemId.Visible = false;
             // 
             // txtName
             // 
@@ -129,6 +131,7 @@
             btnCancel.TabIndex = 9;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // btnSubmit
             // 
