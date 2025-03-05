@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace InventoryManagementSystem
 {
-    public class InventoryItem
+ 
+    public class Shipment
     {
-        public int ItemId { get; set; }
-        public string Name { get; set; }
+        public int Id { get; set; }
+        public string ProductName { get; set; }
         public int Quantity { get; set; }
-        public decimal Price { get; set; }
-
+        public DateTime ShipmentDate { get; set; }
     }
+
 }
